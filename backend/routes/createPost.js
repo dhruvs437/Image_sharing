@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 
 const POST = mongoose.model("POST");
+const USER=mongoose.model("USER");
 //Route
 
 router.get("/allposts", requireLogin, (req, res) => {
-  console.log("here in all posts");
+  // console.log("here in all posts");
   POST.find()
     .populate("postedBy", "_id name Photo")
     .populate("comments.postedBy", "_id name")
@@ -49,24 +50,40 @@ router.get("/myposts", requireLogin, (req, res) => {
     });
 });
 
-//like
-// router.put("/like", requireLogin, (req, res) => {
-//   console.log("piyush1",req.body.postId);
+const generatergx = (str,arrayReg)=>{
+  let curr="";
+  let ascii;
+  for(let i=0;i<str.length;i++){
+      ascii = str.charCodeAt(i);
+      if(str[i]==' '){
+          if(curr.length>0){
+             
+              curr = new RegExp(curr,'i');
+            
+              arrayReg.push(curr);
+              curr="";
+          }
+      }else if(ascii>=97 && ascii<=122){
+          curr+=str[i];
+      }
+  }
+  if(curr.length>0){
+      curr = new RegExp(curr,'i');
+      arrayReg.push(curr);
+  }
+  
+}
+router.get("/filter/:name", requireLogin, async(req, res) => {
+    const name=req.params.name;
+    let arrayReg=[];
+    generatergx(name,arrayReg);
+    const result=await USER.find({name:{ $in: arrayReg }})
+    res.json(result);
 
-//   POST.findByIdAndUpdate(
-//     req.body.postId,
-//     {
-//       $push: { likes: req.user._id.valueOf() },
-//     },
-//     { new: true }
-//   ).exec((err, result) => {
-//     if (err) {
-//       return res.status(422).json({ error: err });
-//     } else {
-//       res.json(result);
-//     }
-//   });
-// });
+  
+});
+
+
 router.put("/like", requireLogin, async (req, res) => {
   try {
     let result = await POST.findByIdAndUpdate(
@@ -84,22 +101,7 @@ router.put("/like", requireLogin, async (req, res) => {
 });
 
 //unlike
-// router.put("/unlike", requireLogin, (req, res) => {
-//   POST.findByIdAndUpdate(
-//     req.body.postId,
-//     {
-//       $pull: { likes: req.user._id.valueOf() },
-//     },
-//     { new: true }
-//   ).exec((err, result) => {
-//     if (err) {
-//       return res.status(422).json({ error: err });
-//     } else {
-//       console.log(result);
-//       res.json(result);
-//     }
-//   });
-// });
+
 router.put("/unlike", requireLogin, async (req, res) => {
   try {
     let result = await POST.findByIdAndUpdate(
@@ -138,32 +140,12 @@ router.put("/comment", requireLogin, async (req, res) => {
   }
 });
 
-// router.put("/comment",requireLogin,(req,res)=>{
-//   const comment={
-//     comment:req.body.text,
-//     postedBy:req.user._id,
-//   }
-//   // console.log(req.body.text)
-//   // console.log((req.user._id).valueOf())
-//   POST.findByIdAndUpdate(req.body.postId,{
-//     $push:{comments:comment}
-//   }),
-//   {
-//     new:true
-//   }.exec((err,result)=>{
-//     if(err){
-//       return res.status(422).json({error:err})
-//     }
-//     else{
-//       res.json(result)
-//     }
-//   })
-// }
+
 // Api to delete post
 
 router.delete("/deletePost/:postId", requireLogin, async (req, res) => {
   try {
-    console.log(req.params.postId);
+    // console.log(req.params.postId);
     let result = await POST.findOne({ _id: req.params.postId });
     if (result.postedBy._id.toString() == req.user._id.toString()) {
       // console.log("removing")

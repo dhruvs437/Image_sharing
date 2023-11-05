@@ -23,18 +23,12 @@ export default function UserProfile() {
         followId: userId,
       }),
     });
-    if(res.status==200){
-      // console.log(setIsFollow);
+    if(res.status==200)
+    {
         setIsFollow(true)
-        // console.log(setIsFollow);
     }
 
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   console.log(setIsFollow);
-      //   setIsFollow(true)
-      //   console.log(setIsFollow);
-      // });
+      
   };
   const unfollowUser = (userId) => {
     console.log("unfollow");
@@ -50,9 +44,7 @@ export default function UserProfile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(setIsFollow);
         setIsFollow(false)
-        // console.log(setIsFollow);
       });
   };
   useEffect(() => {
@@ -63,14 +55,12 @@ export default function UserProfile() {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result)
         setUser(result.user);
         setPosts(result.post);
         if(result.user.followers.includes(JSON.parse(localStorage.getItem("user"))._id))
         {
           setIsFollow(true)
         }
-        // console.log(pic);
       });
   },[isFollow]);
   return (

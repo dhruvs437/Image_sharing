@@ -8,7 +8,7 @@ export default function Modal({ setModalOpen }) {
   return (
     <div className="darkBg" onClick={() => setModalOpen(false)}>
       <div className="centered">
-        <div className="modal">
+        <div className="modalNew">
           {/* modal header */}
           <div className="modalHeader">
             <h5 className="heading">Confirm</h5>

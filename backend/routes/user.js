@@ -51,21 +51,6 @@ router.put("/follow", requireLogin, async (req, res) => {
     res.status(500).json({ error: err });
   }
 
-  // (err, result) => {
-  //   if (err) {
-  //     return res.status(422).json({ error: err });
-  //   }
-
-  //  try
-  //  {
-
-  //   res.json(result1)
-  //  }catch(err){
-  //       return res.status(422).json({ error: err });
-  //     };
-  //   }
-
-  // );
 });
 
 //to unfollow user
@@ -95,26 +80,6 @@ router.put("/unfollow", requireLogin, async (req, res) => {
     res.status(500);
     res.status(500).json({ err: err });
   }
-  // (err, result) => {
-  //   if (err) {
-  //     return res.status(422).json({ error: err });
-  //   }
-
-  //   USER.findByIdAndUpdate(
-  //     req.user._id,
-  //     {
-  //       $pull: { following: req.body.followId },
-  //     },
-  //     {
-  //       new: true,
-  //     }
-  //   )
-  //     .then((result) => res.json(result))
-  //     .catch((err) => {
-  //       return res.status(422).json({ error: err });
-  //     });
-  // }
-  // );
 });
 
 //to upload profilepic

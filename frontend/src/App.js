@@ -13,6 +13,7 @@ import { LoginContext } from "./constext/loginContest";
 import Modal from "./components/Modal";
 import UserProfile from "./components/UserProfile";
 import MyFollowingPosts from "./screens/MyFollowingPosts";
+import Search from "./screens/Search";
 
 function App() {
   const [userLogin, setUserLogin] = useState(false);
@@ -31,11 +32,12 @@ function App() {
             <Route path="/Createpost" element={<Createpost />}></Route>
             <Route path="/profile/:userid" element={<UserProfile />}></Route>
             <Route path="/followingpost" element={<MyFollowingPosts />}></Route>
+            <Route path="/Search/:search" element={<Search />}></Route>
           </Routes>
           <ToastContainer theme="dark" />
           {/* <Modal></Modal> */}
 
-          {modalOpen && <Modal setModalOpen={setModalOpen}></Modal>}
+          {modalOpen && <Modal setModalOpen={setModalOpen} />}
         </LoginContext.Provider>
       </div>
     </BrowserRouter>

@@ -40,3 +40,24 @@ a{
     transform:translateY(-5px);
     box-shadow: 0 10px 20px -10px rgba(219,24,44,0.6);
 }
+.nav-menu{
+    width: 68%;
+}
+.nav-menu input{
+    width: 407px;
+}
+.searchbutton{
+    font-weight: bolder;
+    padding: 13px 25px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: none;
+    color: white;
+    background: #0115eb;
+    transition: all 0.25s ease;
+    margin-left: 20px;
+
+}
+.searchbutton:hover{
+    color:white
+}
