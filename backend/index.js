@@ -9,11 +9,7 @@ const cors=require("cors");
 console.log(process.env.ACCESS_CONTROL_ORIGIN)
 app.use(
 	cors({
-		origin:
-			"https://collegegram-dhruv.vercel.app/" ||
-			function (origin, callback) {
-        callback(null, true);
-			},
+		origin: "https://collegegram-dhruv.vercel.app/",
 		credentials: true,
 	})
 );
