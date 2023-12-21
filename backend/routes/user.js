@@ -83,9 +83,12 @@ router.put("/unfollow", requireLogin, async (req, res) => {
 });
 
 //to upload profilepic
-router.put("/uploadProfilePic", requireLogin, async (req, res) => {
-  try {
-    let result=await USER.findByIdAndUpdate(
+router.put("/uploadProfilePic", requireLogin, async (req, res) => 
+{
+  try 
+  {
+    let result=await USER.findByIdAndUpdate
+    (
       req.user._id,
       {
         $set: { Photo: req.body.pic },
@@ -95,7 +98,9 @@ router.put("/uploadProfilePic", requireLogin, async (req, res) => {
       }
     );
     res.json(result)
-  } catch (err) {
+  } 
+  catch (err) 
+  {
     res.status(422).json({error:err});
   }
 });
