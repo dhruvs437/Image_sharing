@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const {mongoUrl}=require("./keys")
 //to eliminate cors policy which occurs beacuse of different domain of fronted and backend
 const cors=require("cors");
+console.log(process.env.ACCESS_CONTROL_ORIGIN)
 app.use(
 	cors({
 		origin:
