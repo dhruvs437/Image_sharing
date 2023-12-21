@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/Createpost.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 
 export default function Createpost() {
@@ -33,7 +34,7 @@ export default function Createpost() {
 
     //saving data to mongodb
     if (url) {
-      fetch("/createPost ", {
+      fetch(`${API_URL}/createPost`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

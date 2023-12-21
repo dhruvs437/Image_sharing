@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import UserCard from '../components/UserCard';
+import { API_URL } from '../config/api';
 
 const Search = () => {
     const {search}=useParams();
@@ -9,7 +10,7 @@ const Search = () => {
     const filter=async()=>{
         console.log(search);
         try{
-            let result=await fetch(`/filter/${search}`, {
+            let result=await fetch(`${API_URL}/filter/${search}`, {
                 method: "get",
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem("jwt"),

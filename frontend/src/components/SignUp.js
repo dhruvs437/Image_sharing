@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../images/logo.png";
 import "../css/SignUp.css";
 import {toast} from 'react-toastify';
+import { API_URL } from "../config/api";
 
 import { Link, useNavigate } from "react-router-dom";
 export default function SignUp() {
@@ -32,7 +33,7 @@ export default function SignUp() {
       notifyA("Password must contain at least eight character,including at least one number and includes one alphabet of upper case and lower case and one special character")
       return 
     }
-    fetch("/signup",{
+    fetch(`${API_URL}/signup`,{
       method:"post",
       headers:{
         "Content-Type":"application/json"

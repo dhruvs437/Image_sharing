@@ -3,6 +3,7 @@ import "../css/Home.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 export default function Home() {
   var picLink="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
@@ -27,7 +28,7 @@ export default function Home() {
     }
 
     //Fetch
-    fetch("/allposts", {
+    fetch(`${API_URL}/allposts`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -50,7 +51,7 @@ export default function Home() {
   };
 
   const likePost = async (id) => {
-    let res = await fetch("/like", {
+    let res = await fetch(`${API_URL}/like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +86,7 @@ export default function Home() {
   };
 
   const unlikePost = (id) => {
-    fetch("/unlike", {
+    fetch(`${API_URL}/unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -112,7 +113,7 @@ export default function Home() {
 
   //function to make comment
   const makeComment = (text, id) => {
-    fetch("/comment", {
+    fetch(`${API_URL}/comment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

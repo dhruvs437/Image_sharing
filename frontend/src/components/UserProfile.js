@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/Profile.css";
 import PostDetail from "./PostDetail";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 export default function UserProfile() {
   var picLink="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
@@ -13,7 +14,7 @@ export default function UserProfile() {
   const [posts, setPosts] = useState([]);
 
   const followUser = async (userId) => {
-    const res = await fetch("/follow", {
+    const res = await fetch(`${API_URL}/follow`, {
       method: "put",
       headers: {
         "content-Type": "application/json",
@@ -32,7 +33,7 @@ export default function UserProfile() {
   };
   const unfollowUser = (userId) => {
     console.log("unfollow");
-    fetch("/unfollow", {
+    fetch(`${API_URL}/unfollow`, {
       method: "put",
       headers: {
         "content-Type": "application/json",
@@ -48,7 +49,7 @@ export default function UserProfile() {
       });
   };
   useEffect(() => {
-    fetch(`/user/${userid}`, {
+    fetch(`${API_URL}/user/${userid}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

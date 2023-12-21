@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../css/Profile.css";
 import PostDetail from "../components/PostDetail";
 import ProfilePic from "../components/ProfilePic";
+import { API_URL } from "../config/api";
+
 export default function Profile() {
   var picLink="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
   const [pic, setPic] = useState([]);
@@ -30,7 +32,7 @@ export default function Profile() {
 
   useEffect(() => {
     fetch(
-      `/user/${
+      `${API_URL}/user/${
         JSON.parse(localStorage.getItem("user"))._id
       }`,
       {

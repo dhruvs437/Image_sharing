@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/Profile.css";
+import { API_URL } from "../config/api";
 
 function ProfilePic({ changeprofile }) {
   const hiddenFileInput = useRef(null);
@@ -24,7 +25,7 @@ function ProfilePic({ changeprofile }) {
 
   const postpic = () => {
     //saving post to mongodb
-    fetch("/uploadProfilePic ", {
+    fetch(`${API_URL}/uploadProfilePic`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

@@ -4,6 +4,7 @@ import "../css/SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { LoginContext } from "../constext/loginContest";
+import { API_URL } from "../config/api";
 
 function SignIn() {
   const {setUserLogin}=useContext(LoginContext)
@@ -24,7 +25,7 @@ function SignIn() {
       return;
     }
     //sending data to server
-    fetch("/signin", {
+    fetch(`${API_URL}/signin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
