@@ -14,6 +14,7 @@ import Modal from "./components/Modal";
 import UserProfile from "./components/UserProfile";
 import MyFollowingPosts from "./screens/MyFollowingPosts";
 import Search from "./screens/Search";
+import Messenger from "./screens/messenger/Messenger";
 
 function App() {
   const [userLogin, setUserLogin] = useState(false);
@@ -26,6 +27,7 @@ function App() {
           <Navbar login={userLogin} />
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/messenger" element={<Messenger />}></Route>
             <Route path="/SignUp" element={<SignUp />}></Route>
             <Route path="/SignIn" element={<SignIn />}></Route>
             <Route exact path="/Profile" element={<Profile />}></Route>
