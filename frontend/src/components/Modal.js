@@ -11,7 +11,8 @@ export default function Modal({ setModalOpen }) {
         <div className="modalNew">
           {/* modal header */}
           <div className="modalHeader">
-            <h5 className="heading">Confirm</h5>
+            {/* <h5 className="heading">Confirm</h5> */}
+            <h1>Starts:</h1> 
           </div>
           <button className="closeBtn" onClick={() => setModalOpen(false)}>
             <RiCloseLine></RiCloseLine>
