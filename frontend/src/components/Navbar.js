@@ -29,9 +29,9 @@ export default function Navbar({ login }) {
           <Link to={"/createPost"}>
             <li>Create Post</li>
           </Link>
-          <Link to={"/messenger"}>
+          {/* <Link to={"/messenger"}>
             <li>Messenger</li>
-          </Link>
+          </Link> */}
           <Link style={{ marginLeft: "20px" }} to={"/followingpost"}>
             My Following
           </Link>
