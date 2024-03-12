@@ -1,5 +1,5 @@
 import "./message.css";
-// import { format } from "timeago.js";
+import { format } from "timeago.js";
 
 export default function Message({ message, own }) {
   return (
@@ -7,16 +7,14 @@ export default function Message({ message, own }) {
       <div className="messageTop">
         <img
           className="messageImg"
-          src="http://surl.li/rkbmr"
+          src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
         />
-        <p className="messageText">
-          {/* {message.text} */}
-          hii  iam  here
-          </p>
+        <p className="messageText">{message.text}</p>
       </div>
       <div className="messageBottom">
-      {/* {format(message.createdAt)} */}
-        1 hour ago</div>
+        {format(message.createdAt)}
+        </div>
     </div>
   );
 }

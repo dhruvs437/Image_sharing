@@ -15,7 +15,7 @@
   }
   
   .chatBox {
-    flex: 5.5;
+    flex: 10.5;
   }
   
   .chatBoxWrapper {
@@ -54,9 +54,9 @@
     color: white;
   }
   
-  .chatOnline {
+  /* .chatOnline {
     flex: 3;
-  }
+  } */
   
   .chatMenuWrapper,
   .chatBoxWrapper,
