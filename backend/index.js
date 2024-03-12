@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require('dotenv').config();
-const port = process.env.port||6000;
+const port = process.env.port||8800;
 const mongoose = require("mongoose");
 const {mongoUrl}=require("./keys")
 //to eliminate cors policy which occurs beacuse of different domain of fronted and backend
@@ -19,6 +19,10 @@ app.use(require("./routes/auth"))
 app.use(require('./routes/createPost'))
 app.use(require('./routes/user'));
 // let mongoUrl = process.env.MONGOURL
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 mongoose.connect(mongoUrl);
 
 app.listen(port, () => {
