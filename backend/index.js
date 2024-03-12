@@ -19,6 +19,12 @@ app.use(require("./routes/auth"))
 app.use(require('./routes/createPost'))
 app.use(require('./routes/user'));
 // let mongoUrl = process.env.MONGOURL
+app.use(require("./routes/conversations"));
+app.use(require("./routes/messages"));
+// const conversationRoute = require("./routes/conversations");
+// // const messageRoute = require("./routes/messages");
+// app.use("/api/conversations", conversationRoute);
+// // app.use("/api/messages", messageRoute);
 mongoose.connect(mongoUrl);
 
 app.listen(port, () => {
