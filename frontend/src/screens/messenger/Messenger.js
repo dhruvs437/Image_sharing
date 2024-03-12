@@ -25,6 +25,7 @@ function Messenger() {
                 <Message/>
                 <Message/>
             </div>
+            
             <div className="chatBoxBottom">
             <textarea className="chatMessageInput" placeholder='write something...'></textarea>
             <button className='chatSubmitButton'>Send</button>
