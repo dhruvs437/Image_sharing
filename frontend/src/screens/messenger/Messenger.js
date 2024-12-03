@@ -90,9 +90,9 @@ function Messenger() {
             {currentChat ? (
               <>
                 <div className="chatBoxTop">
-                  {messages.map((m) => (
+                  {messages.map((m,index) => (
                     <div ref={scrollRef}>
-                      <Message message={m} own={m.sender === user._id} />
+                      <Message key={index} message={m} own={m.sender === user._id} />
                     </div>
                   ))}
                 </div>

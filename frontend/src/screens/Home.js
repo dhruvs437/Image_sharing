@@ -63,7 +63,7 @@ export default function Home() {
     });
     let result = await res.json();
     const newData = data.map((posts) => {
-      if (posts._id == result._id) {
+      if (posts?._id == result?._id) {
         return result;
       } else {
         return posts;
@@ -100,7 +100,7 @@ export default function Home() {
       .then((result) => {
         console.log(result);
         const newData = data.map((posts) => {
-          if (posts._id === result._id) {
+          if (posts?._id === result?._id) {
             return result;
           } else {
             return posts;
@@ -126,8 +126,8 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-        const newData = data.map((posts) => {
-          if (posts._id === result._id) {
+        const newData = data?.map((posts) => {
+          if (posts?._id === result?._id) {
             return result;
           } else {
             return posts;
@@ -150,14 +150,14 @@ export default function Home() {
             <div className="card-header">
               <div className="card-pic">
                 <img 
-                  src={posts.postedBy.Photo?posts.postedBy.Photo:picLink}
+                  src={posts?.postedBy?.Photo?posts?.postedBy?.Photo:picLink}
                   alt=""
                   style={{borderRadius:"50%",height:"40px",width:"40px"}}
                 />
               </div>
               <h5>
-                <Link to={`/profile/${posts.postedBy._id}`}>
-                {posts.postedBy.name}
+                <Link to={`/profile/${posts?.postedBy?._id}`}>
+                {posts?.postedBy?.name}
                 </Link>
               </h5>
             </div>
@@ -166,13 +166,13 @@ export default function Home() {
             </div>
             {/* card content */}
             <div className="card-content">
-              {posts.likes.includes(
-                JSON.parse(localStorage.getItem("user"))._id
+              {posts?.likes?.includes(
+                JSON.parse(localStorage.getItem("user"))?._id
               ) ? (
                 <span
                   className="material-symbols-outlined material-symbols-outlined-red"
                   onClick={() => {
-                    unlikePost(posts._id);
+                    unlikePost(posts?._id);
                   }}
                 >
                   favorite
@@ -181,7 +181,7 @@ export default function Home() {
                 <span
                   className="material-symbols-outlined"
                   onClick={() => {
-                    likePost(posts._id);
+                    likePost(posts?._id);
                   }}
                 >
                   favorite
@@ -212,7 +212,7 @@ export default function Home() {
               <button
                 className="comment"
                 onClick={() => {
-                  makeComment(comment, posts._id);
+                  makeComment(comment, posts?._id);
                 }}
               >
                 Post
@@ -242,7 +242,7 @@ export default function Home() {
 
                   />
                 </div>
-                <h5>{item.postedBy.name}</h5>
+                <h5>{item?.postedBy?.name}</h5>
               </div>
               {/* commentsection */}
               <div
@@ -256,7 +256,7 @@ export default function Home() {
                         className="commenter"
                         style={{ fontWeight: "bolder" }}
                       >
-                        {comment.postedBy.name}{" "}
+                        {comment?.postedBy?.name}{" "}
                       </span>
                       <span className="commentText">{comment.comment}</span>
                     </p>
@@ -302,7 +302,7 @@ export default function Home() {
                 <button
                   className="comment"
                   onClick={() => {
-                    makeComment(comment, item._id);
+                    makeComment(comment, item?._id);
                     toggleComment();
                   }}
                 >
