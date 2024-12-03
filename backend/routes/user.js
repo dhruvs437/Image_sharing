@@ -103,5 +103,6 @@ router.put("/uploadProfilePic", requireLogin, async (req, res) =>
   {
     res.status(422).json({error:err});
   }
+
 });
 module.exports = router;

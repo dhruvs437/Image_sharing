@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Conversation = require("../models/Conversation");
-
+const mongoose = require("mongoose");
+const USER = mongoose.model("USER");
 //new conv
 
 router.post("/", async (req, res) => {
